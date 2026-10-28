@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F7F1"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Health Record"
+            android:textColor="#426B57"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Track your daily wellness"
+            android:textColor="#777777"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Steps Count"
+            android:textColor="#263F32"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter steps"
+            android:inputType="number"
+            android:padding="14dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Calories Burned (kcal)"
+            android:textColor="#263F32"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etCalories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter calories"
+            android:inputType="numberDecimal"
+            android:padding="14dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Water Intake (ml)"
+            android:textColor="#263F32"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etWater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter water intake"
+            android:inputType="number"
+            android:padding="14dp" />
+
+        <Button
+            android:id="@+id/btnSaveRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="Save Record"
+            android:backgroundTint="#426B57"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>

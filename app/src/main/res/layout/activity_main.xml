@@ -66,5 +66,15 @@
             android:textColor="#345363"
             android:textSize="20sp" />
 
+        <Button
+            android:id="@+id/btnAddRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Add Health Record"
+            android:backgroundTint="#426B57"
+            android:textColor="#FFFFFF" />
+
+
     </LinearLayout>
 </ScrollView>
