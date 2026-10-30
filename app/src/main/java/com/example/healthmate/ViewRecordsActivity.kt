@@ -2,6 +2,7 @@ package com.example.healthmate
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -38,11 +39,17 @@ class ViewRecordsActivity : AppCompatActivity() {
         } else {
             tvEmpty.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
-
-            recyclerView.adapter = HealthRecordAdapter(records) { record ->
-                showDeleteConfirmation(record)
-            }
         }
+
+        recyclerView.adapter = HealthRecordAdapter(
+            records,
+            onDeleteClick = { record ->
+                showDeleteConfirmation(record)
+            },
+            onEditClick = { record ->
+                showEditDialog(record)
+            }
+        )
     }
 
     private fun showDeleteConfirmation(record: HealthRecord) {
@@ -70,5 +77,73 @@ class ViewRecordsActivity : AppCompatActivity() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+    }
+
+    private fun showEditDialog(record: HealthRecord) {
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_edit_record,
+            null
+        )
+
+        val etSteps = dialogView.findViewById<EditText>(R.id.etEditSteps)
+        val etCalories = dialogView.findViewById<EditText>(R.id.etEditCalories)
+        val etWater = dialogView.findViewById<EditText>(R.id.etEditWater)
+
+        etSteps.setText(record.steps.toString())
+        etCalories.setText(record.calories.toString())
+        etWater.setText(record.water.toString())
+
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Edit Health Record")
+            .setView(dialogView)
+            .setPositiveButton("Save", null)
+            .setNegativeButton("Cancel", null)
+            .create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val steps = etSteps.text.toString().toIntOrNull()
+                val calories = etCalories.text.toString().toDoubleOrNull()
+                val water = etWater.text.toString().toIntOrNull()
+
+                if (
+                    steps == null || steps < 0 ||
+                    calories == null || !calories.isFinite() || calories < 0 ||
+                    water == null || water < 0
+                ) {
+                    Toast.makeText(
+                        this,
+                        "Please enter valid values",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val updated = databaseHelper.updateRecord(
+                        record.id,
+                        steps,
+                        calories,
+                        water
+                    )
+
+                    if (updated) {
+                        Toast.makeText(
+                            this,
+                            "Record updated successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        dialog.dismiss()
+                        loadRecords()
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Failed to update record",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+
+        dialog.show()
     }
 }

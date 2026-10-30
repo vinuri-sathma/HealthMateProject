@@ -12,7 +12,9 @@ import android.widget.Button
 
 class HealthRecordAdapter(
     private val records: List<HealthRecord>,
-    private val onDeleteClick: (HealthRecord) -> Unit
+    private val onDeleteClick: (HealthRecord) -> Unit,
+    private val onEditClick: (HealthRecord) -> Unit
+
 ) : RecyclerView.Adapter<HealthRecordAdapter.RecordViewHolder>() {
 
 
@@ -25,6 +27,8 @@ class HealthRecordAdapter(
         val tvWater: TextView = itemView.findViewById(R.id.tvRecordWater)
 
         val btnDelete: Button = itemView.findViewById(R.id.btnDeleteRecord)
+
+        val btnEdit: Button = itemView.findViewById(R.id.btnEditRecord)
 
     }
 
@@ -48,6 +52,10 @@ class HealthRecordAdapter(
         holder.btnDelete.setOnClickListener {
             onDeleteClick(record)
         }
+        holder.btnEdit.setOnClickListener {
+            onEditClick(record)
+        }
+
 
     }
 

@@ -44,6 +44,15 @@
         android:textColor="#263F32" />
 
     <Button
+        android:id="@+id/btnEditRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#426B57" />
+
+    <Button
         android:id="@+id/btnDeleteRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -105,4 +105,30 @@ class DatabaseHelper(context: Context) :
 
         return rowsDeleted > 0
     }
+
+
+    fun updateRecord(
+        recordId: Int,
+        steps: Int,
+        calories: Double,
+        water: Int
+    ): Boolean {
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put(COL_STEPS, steps)
+            put(COL_CALORIES, calories)
+            put(COL_WATER, water)
+        }
+
+        val rowsUpdated = db.update(
+            TABLE_RECORDS,
+            values,
+            "$COL_ID = ?",
+            arrayOf(recordId.toString())
+        )
+
+        return rowsUpdated > 0
+    }
+
 }
