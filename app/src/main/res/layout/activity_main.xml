@@ -76,5 +76,14 @@
             android:textColor="#FFFFFF" />
 
 
+        <Button
+            android:id="@+id/btnViewRecords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="View Health Records"
+            android:backgroundTint="#426B57"
+            android:textColor="#FFFFFF" />
+
     </LinearLayout>
 </ScrollView>

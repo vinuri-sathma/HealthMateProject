@@ -60,4 +60,37 @@ class DatabaseHelper(context: Context) :
         val result = db.insert(TABLE_RECORDS, null, values)
         return result != -1L
     }
+
+
+    fun getAllRecords(): List<HealthRecord> {
+        val records = mutableListOf<HealthRecord>()
+        val db = readableDatabase
+
+        val cursor = db.query(
+            TABLE_RECORDS,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "$COL_DATE DESC, $COL_ID DESC"
+        )
+
+        cursor.use {
+            while (it.moveToNext()) {
+                val record = HealthRecord(
+                    id = it.getInt(it.getColumnIndexOrThrow(COL_ID)),
+                    steps = it.getInt(it.getColumnIndexOrThrow(COL_STEPS)),
+                    calories = it.getDouble(it.getColumnIndexOrThrow(COL_CALORIES)),
+                    water = it.getInt(it.getColumnIndexOrThrow(COL_WATER)),
+                    date = it.getString(it.getColumnIndexOrThrow(COL_DATE))
+                )
+
+                records.add(record)
+            }
+        }
+
+        return records
+    }
+
 }

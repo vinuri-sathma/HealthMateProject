@@ -1,4 +1,3 @@
-
 package com.example.healthmate
 
 import android.content.Intent
@@ -13,9 +12,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnAddRecord = findViewById<Button>(R.id.btnAddRecord)
+        val btnViewRecords = findViewById<Button>(R.id.btnViewRecords)
 
         btnAddRecord.setOnClickListener {
             val intent = Intent(this, AddRecordActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnViewRecords.setOnClickListener {
+            val intent = Intent(this, ViewRecordsActivity::class.java)
             startActivity(intent)
         }
     }

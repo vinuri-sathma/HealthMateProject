@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:orientation="vertical"
+    android:background="#DDECE1"
+    android:padding="18dp">
+
+    <TextView
+        android:id="@+id/tvRecordDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#263F32" />
+
+    <TextView
+        android:id="@+id/tvRecordSteps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Steps: 0"
+        android:textSize="16sp"
+        android:textColor="#263F32" />
+
+    <TextView
+        android:id="@+id/tvRecordCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Calories: 0 kcal"
+        android:textSize="16sp"
+        android:textColor="#263F32" />
+
+    <TextView
+        android:id="@+id/tvRecordWater"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Water Intake: 0 ml"
+        android:textSize="16sp"
+        android:textColor="#263F32" />
+
+</LinearLayout>
