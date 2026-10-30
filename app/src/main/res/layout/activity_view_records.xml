@@ -22,6 +22,27 @@
         android:textSize="14sp"
         android:textColor="#777777" />
 
+    <EditText
+        android:id="@+id/etSearchDate"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:hint="Search by date (YYYY-MM-DD)"
+        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
+        android:backgroundTint="#426B57"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/btnClearSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Show All Records"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#426B57" />
+
     <TextView
         android:id="@+id/tvEmptyRecords"
         android:layout_width="match_parent"

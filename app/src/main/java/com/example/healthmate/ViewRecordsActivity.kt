@@ -10,6 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthmate.adapter.HealthRecordAdapter
+import android.app.DatePickerDialog
+import java.util.Calendar
+import java.util.Locale
+import android.widget.Button
+
+
 
 class ViewRecordsActivity : AppCompatActivity() {
 
@@ -27,11 +33,57 @@ class ViewRecordsActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        val etSearchDate = findViewById<EditText>(R.id.etSearchDate)
+
+        etSearchDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+
+            DatePickerDialog(
+                this,
+                { _, year, month, day ->
+                    val selectedDate = String.format(
+                        Locale.US,
+                        "%04d-%02d-%02d",
+                        year,
+                        month + 1,
+                        day
+                    )
+
+                    etSearchDate.setText(selectedDate)
+                    loadRecords()
+
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+        val btnClearSearch = findViewById<Button>(R.id.btnClearSearch)
+
+        btnClearSearch.setOnClickListener {
+            etSearchDate.setText("")
+            loadRecords()
+        }
+
+
+
         loadRecords()
     }
 
     private fun loadRecords() {
-        val records = databaseHelper.getAllRecords()
+
+        val selectedDate = findViewById<EditText>(R.id.etSearchDate)
+            .text.toString()
+
+        val allRecords = databaseHelper.getAllRecords()
+
+        val records = if (selectedDate.isEmpty()) {
+            allRecords
+        } else {
+            allRecords.filter { it.date == selectedDate }
+        }
+
 
         if (records.isEmpty()) {
             tvEmpty.visibility = View.VISIBLE
