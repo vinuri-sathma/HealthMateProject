@@ -37,6 +37,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvDashboardSteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -47,6 +48,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tvDashboardCalories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -57,6 +59,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tvDashboardWater"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

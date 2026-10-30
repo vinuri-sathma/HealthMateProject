@@ -1,4 +1,3 @@
-
 package com.example.healthmate
 
 import android.content.Context
@@ -106,7 +105,6 @@ class DatabaseHelper(context: Context) :
         return rowsDeleted > 0
     }
 
-
     fun updateRecord(
         recordId: Int,
         steps: Int,
@@ -131,4 +129,8 @@ class DatabaseHelper(context: Context) :
         return rowsUpdated > 0
     }
 
+    // Get the latest saved health record
+    fun getLatestRecord(): HealthRecord? {
+        return getAllRecords().firstOrNull()
+    }
 }
