@@ -1,3 +1,4 @@
+
 package com.example.healthmate
 
 import android.content.Context
@@ -61,7 +62,6 @@ class DatabaseHelper(context: Context) :
         return result != -1L
     }
 
-
     fun getAllRecords(): List<HealthRecord> {
         val records = mutableListOf<HealthRecord>()
         val db = readableDatabase
@@ -93,4 +93,16 @@ class DatabaseHelper(context: Context) :
         return records
     }
 
+    // Delete a health record using its ID
+    fun deleteRecord(recordId: Int): Boolean {
+        val db = writableDatabase
+
+        val rowsDeleted = db.delete(
+            TABLE_RECORDS,
+            "$COL_ID = ?",
+            arrayOf(recordId.toString())
+        )
+
+        return rowsDeleted > 0
+    }
 }
