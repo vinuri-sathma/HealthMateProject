@@ -44,6 +44,14 @@ class AddRecordActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter valid values", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            if (calories.substringAfter('.', "").length > 2) {
+                Toast.makeText(
+                    this,
+                    "Calories can have up to 2 decimal places",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
 
             val date = SimpleDateFormat(
                 "yyyy-MM-dd", Locale.getDefault()
