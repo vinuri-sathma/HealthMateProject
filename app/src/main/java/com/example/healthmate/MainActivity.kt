@@ -40,14 +40,16 @@ class MainActivity : AppCompatActivity() {
 
         val latestRecord = databaseHelper.getLatestRecord()
 
+
         if (latestRecord != null) {
-            tvSteps.text = "👟  Steps\n\n${latestRecord.steps} steps"
-            tvCalories.text = "🔥  Calories\n\n${latestRecord.calories} kcal"
-            tvWater.text = "💧  Water Intake\n\n${latestRecord.water} ml"
+            tvSteps.text = getString(R.string.dashboard_steps, latestRecord.steps)
+            tvCalories.text = getString(R.string.dashboard_calories, latestRecord.calories.toString())
+            tvWater.text = getString(R.string.dashboard_water, latestRecord.water)
         } else {
-            tvSteps.text = "👟  Steps\n\n0 steps"
-            tvCalories.text = "🔥  Calories\n\n0 kcal"
-            tvWater.text = "💧  Water Intake\n\n0 ml"
+            tvSteps.text = getString(R.string.dashboard_steps, 0)
+            tvCalories.text = getString(R.string.dashboard_calories, "0")
+            tvWater.text = getString(R.string.dashboard_water, 0)
         }
+
     }
 }

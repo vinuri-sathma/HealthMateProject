@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">HealthMate</string>
+    <string name="dashboard_steps">👟  Steps\n\n%d steps</string>
+    <string name="dashboard_calories">🔥  Calories\n\n%s kcal</string>
+    <string name="dashboard_water">💧  Water Intake\n\n%d ml</string>
+
 </resources>
