@@ -38,18 +38,27 @@ class MainActivity : AppCompatActivity() {
         val tvCalories = findViewById<TextView>(R.id.tvDashboardCalories)
         val tvWater = findViewById<TextView>(R.id.tvDashboardWater)
 
-        val latestRecord = databaseHelper.getLatestRecord()
+        val today = java.text.SimpleDateFormat(
+            "yyyy-MM-dd",
+            java.util.Locale.getDefault()
+        ).format(java.util.Date())
 
+        val todayRecords = databaseHelper.getAllRecords()
+            .filter { it.date == today }
 
-        if (latestRecord != null) {
-            tvSteps.text = getString(R.string.dashboard_steps, latestRecord.steps)
-            tvCalories.text = getString(R.string.dashboard_calories, latestRecord.calories.toString())
-            tvWater.text = getString(R.string.dashboard_water, latestRecord.water)
-        } else {
-            tvSteps.text = getString(R.string.dashboard_steps, 0)
-            tvCalories.text = getString(R.string.dashboard_calories, "0")
-            tvWater.text = getString(R.string.dashboard_water, 0)
-        }
+        val totalSteps = todayRecords.sumOf { it.steps }
+        val totalCalories = todayRecords.sumOf { it.calories }
+        val totalWater = todayRecords.sumOf { it.water }
+
+        tvSteps.text = getString(R.string.dashboard_steps, totalSteps)
+
+        tvCalories.text = getString(
+            R.string.dashboard_calories,
+            totalCalories.toString()
+        )
+
+        tvWater.text = getString(R.string.dashboard_water, totalWater)
+
 
     }
 }
