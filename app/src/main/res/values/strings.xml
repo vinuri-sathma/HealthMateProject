@@ -32,4 +32,8 @@
     <string name="record_edit">Edit</string>
     <string name="record_delete">Delete</string>
 
+    <string name="edit_steps_hint">Steps</string>
+    <string name="edit_calories_hint">Calories (kcal)</string>
+    <string name="edit_water_hint">Water Intake (ml)</string>
+
 </resources>
