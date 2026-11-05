@@ -156,14 +156,15 @@ class ViewRecordsActivity : AppCompatActivity() {
         dialog.setOnShowListener {
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                 val steps = etSteps.text.toString().toIntOrNull()
-                val calories = etCalories.text.toString().toDoubleOrNull()
+                val calories = etCalories.text.toString().toIntOrNull()
                 val water = etWater.text.toString().toIntOrNull()
 
                 if (
                     steps == null || steps < 0 ||
-                    calories == null || !calories.isFinite() || calories < 0 ||
+                    calories == null || calories < 0 ||
                     water == null || water < 0
                 ) {
+
                     Toast.makeText(
                         this,
                         "Please enter valid values",

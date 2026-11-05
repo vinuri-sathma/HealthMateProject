@@ -41,7 +41,7 @@
         android:id="@+id/etEditCalories"
         android:layout_width="280dp"
         android:layout_height="48dp"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:textColor="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:importantForAutofill="no" />

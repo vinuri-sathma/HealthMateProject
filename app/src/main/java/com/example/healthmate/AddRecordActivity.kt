@@ -34,22 +34,13 @@ class AddRecordActivity : AppCompatActivity() {
             }
 
             val stepsValue = steps.toIntOrNull()
-            val caloriesValue = calories.toDoubleOrNull()
+            val caloriesValue = calories.toIntOrNull()
             val waterValue = water.toIntOrNull()
 
             if (stepsValue == null || caloriesValue == null || waterValue == null ||
-                stepsValue < 0 || !caloriesValue.isFinite() ||
-                caloriesValue < 0 || waterValue < 0) {
+                stepsValue < 0 || caloriesValue < 0 || waterValue < 0) {
 
                 Toast.makeText(this, "Please enter valid values", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            if (calories.substringAfter('.', "").length > 2) {
-                Toast.makeText(
-                    this,
-                    "Calories can have up to 2 decimal places",
-                    Toast.LENGTH_SHORT
-                ).show()
                 return@setOnClickListener
             }
 

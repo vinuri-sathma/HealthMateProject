@@ -63,7 +63,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:hint="@string/hint_calories"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:importantForAutofill="no"
             android:padding="14dp" />
 

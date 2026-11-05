@@ -1,3 +1,4 @@
+
 package com.example.healthmate
 
 import android.content.Context
@@ -10,7 +11,7 @@ class DatabaseHelper(context: Context) :
 
     companion object {
         private const val DATABASE_NAME = "healthmate.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
 
         const val TABLE_RECORDS = "health_records"
         const val COL_ID = "id"
@@ -22,12 +23,12 @@ class DatabaseHelper(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTable = """
-            CREATE TABLE $TABLE_RECORDS (
-                $COL_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                $COL_STEPS INTEGER NOT NULL,
-                $COL_CALORIES REAL NOT NULL,
-                $COL_WATER INTEGER NOT NULL,
-                $COL_DATE TEXT NOT NULL
+            CREATE TABLE health_records (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                steps INTEGER NOT NULL,
+                calories INTEGER NOT NULL,
+                water INTEGER NOT NULL,
+                record_date TEXT NOT NULL
             )
         """.trimIndent()
 
@@ -39,12 +40,44 @@ class DatabaseHelper(context: Context) :
         oldVersion: Int,
         newVersion: Int
     ) {
-        // Database upgrades will be handled here when needed.
+        if (oldVersion < 2) {
+            db.execSQL(
+                """
+                CREATE TABLE health_records_new (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    steps INTEGER NOT NULL,
+                    calories INTEGER NOT NULL,
+                    water INTEGER NOT NULL,
+                    record_date TEXT NOT NULL
+                )
+                """.trimIndent()
+            )
+
+            db.execSQL(
+                """
+                INSERT INTO health_records_new
+                    (id, steps, calories, water, record_date)
+                SELECT
+                    id,
+                    steps,
+                    CAST(ROUND(calories) AS INTEGER),
+                    water,
+                    record_date
+                FROM health_records
+                """.trimIndent()
+            )
+
+            db.execSQL("DROP TABLE health_records")
+
+            db.execSQL(
+                "ALTER TABLE health_records_new RENAME TO health_records"
+            )
+        }
     }
 
     fun insertRecord(
         steps: Int,
-        calories: Double,
+        calories: Int,
         water: Int,
         date: String
     ): Boolean {
@@ -80,7 +113,9 @@ class DatabaseHelper(context: Context) :
                 val record = HealthRecord(
                     id = it.getInt(it.getColumnIndexOrThrow(COL_ID)),
                     steps = it.getInt(it.getColumnIndexOrThrow(COL_STEPS)),
-                    calories = it.getDouble(it.getColumnIndexOrThrow(COL_CALORIES)),
+                    calories = it.getInt(
+                        it.getColumnIndexOrThrow(COL_CALORIES)
+                    ),
                     water = it.getInt(it.getColumnIndexOrThrow(COL_WATER)),
                     date = it.getString(it.getColumnIndexOrThrow(COL_DATE))
                 )
@@ -108,7 +143,7 @@ class DatabaseHelper(context: Context) :
     fun updateRecord(
         recordId: Int,
         steps: Int,
-        calories: Double,
+        calories: Int,
         water: Int
     ): Boolean {
         val db = writableDatabase
