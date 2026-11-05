@@ -4,4 +4,10 @@
     <string name="dashboard_calories">🔥  Calories\n\n%s kcal</string>
     <string name="dashboard_water">💧  Water Intake\n\n%d ml</string>
 
+    <string name="home_app_title">HealthMate</string>
+    <string name="home_subtitle">Your daily wellness companion</string>
+    <string name="home_overview">Today\'s Overview</string>
+    <string name="home_add_record">Add Health Record</string>
+    <string name="home_view_records">View Health Records</string>
+
 </resources>

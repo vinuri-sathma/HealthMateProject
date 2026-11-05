@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HealthMate"
+            android:text="@string/home_app_title"
             android:textColor="#426B57"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -23,15 +23,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Your daily wellness companion"
-            android:textColor="#777777"
+            android:text="@string/home_subtitle"
+            android:textColor="#555555"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:text="Today's Overview"
+            android:text="@string/home_overview"
             android:textColor="#263F32"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
             android:layout_marginTop="20dp"
             android:background="#DDECE1"
             android:padding="24dp"
-            android:text="👟  Steps\n\n0 steps"
+            android:text="@string/dashboard_steps"
             android:textColor="#263F32"
             android:textSize="20sp" />
 
@@ -54,7 +54,7 @@
             android:layout_marginTop="16dp"
             android:background="#F2E5D5"
             android:padding="24dp"
-            android:text="🔥  Calories\n\n0 kcal"
+            android:text="@string/dashboard_calories"
             android:textColor="#5C4536"
             android:textSize="20sp" />
 
@@ -65,26 +65,27 @@
             android:layout_marginTop="16dp"
             android:background="#DCECF2"
             android:padding="24dp"
-            android:text="💧  Water Intake\n\n0 ml"
+            android:text="@string/dashboard_water"
             android:textColor="#345363"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnAddRecord"
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
+            android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Add Health Record"
+            android:text="@string/home_add_record"
             android:backgroundTint="#426B57"
             android:textColor="#FFFFFF" />
 
-
         <Button
             android:id="@+id/btnViewRecords"
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
+            android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="View Health Records"
+            android:text="@string/home_view_records"
             android:backgroundTint="#426B57"
             android:textColor="#FFFFFF" />
 
