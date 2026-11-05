@@ -128,9 +128,4 @@ class DatabaseHelper(context: Context) :
 
         return rowsUpdated > 0
     }
-
-    // Get the latest saved health record
-    fun getLatestRecord(): HealthRecord? {
-        return getAllRecords().firstOrNull()
-    }
 }
