@@ -34,6 +34,7 @@ class ViewRecordsActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val etSearchDate = findViewById<EditText>(R.id.etSearchDate)
+        etSearchDate.showSoftInputOnFocus = false
 
         etSearchDate.setOnClickListener {
             val calendar = Calendar.getInstance()

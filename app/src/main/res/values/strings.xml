@@ -19,4 +19,11 @@
     <string name="hint_water">Enter water intake</string>
     <string name="save_record">Save Record</string>
 
+    <string name="records_title">My Health Records</string>
+    <string name="records_subtitle">View your daily wellness history</string>
+    <string name="search_date_hint">Search by date (YYYY-MM-DD)</string>
+    <string name="show_all_records">Show All Records</string>
+    <string name="no_records">No health records available</string>
+
+
 </resources>
