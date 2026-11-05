@@ -36,4 +36,8 @@
     <string name="edit_calories_hint">Calories (kcal)</string>
     <string name="edit_water_hint">Water Intake (ml)</string>
 
+    <string name="water_goal_title">Daily Water Goal</string>
+    <string name="water_goal_progress">%1$d / %2$d ml</string>
+    <string name="water_goal_percentage">%1$d%% completed</string>
+
 </resources>

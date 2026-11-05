@@ -50,6 +50,30 @@ class MainActivity : AppCompatActivity() {
         val totalCalories = todayRecords.sumOf { it.calories }
         val totalWater = todayRecords.sumOf { it.water }
 
+        val waterGoal = 2000
+
+        val waterPercentage = ((totalWater.toDouble() / waterGoal) * 100)
+            .toInt()
+            .coerceIn(0, 100)
+
+        val tvWaterGoalProgress =
+            findViewById<TextView>(R.id.tvWaterGoalProgress)
+
+        val tvWaterGoalPercentage =
+            findViewById<TextView>(R.id.tvWaterGoalPercentage)
+
+        val progressWaterGoal =
+            findViewById<android.widget.ProgressBar>(R.id.progressWaterGoal)
+
+        tvWaterGoalProgress.text =
+            getString(R.string.water_goal_progress, totalWater, waterGoal)
+
+        tvWaterGoalPercentage.text =
+            getString(R.string.water_goal_percentage, waterPercentage)
+
+        progressWaterGoal.progress = waterPercentage
+
+
         tvSteps.text = getString(R.string.dashboard_steps, totalSteps)
 
         tvCalories.text = getString(
