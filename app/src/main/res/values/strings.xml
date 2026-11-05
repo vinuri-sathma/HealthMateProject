@@ -10,4 +10,13 @@
     <string name="home_add_record">Add Health Record</string>
     <string name="home_view_records">View Health Records</string>
 
+    <string name="add_record_subtitle">Track your daily wellness</string>
+    <string name="label_steps">Steps Count</string>
+    <string name="hint_steps">Enter steps</string>
+    <string name="label_calories">Calories Burned (kcal)</string>
+    <string name="hint_calories">Enter calories</string>
+    <string name="label_water">Water Intake (ml)</string>
+    <string name="hint_water">Enter water intake</string>
+    <string name="save_record">Save Record</string>
+
 </resources>
