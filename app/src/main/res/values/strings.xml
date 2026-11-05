@@ -25,5 +25,11 @@
     <string name="show_all_records">Show All Records</string>
     <string name="no_records">No health records available</string>
 
+    <string name="record_date_label">Date</string>
+    <string name="record_steps_label">Steps: 0</string>
+    <string name="record_calories_label">Calories: 0 kcal</string>
+    <string name="record_water_label">Water Intake: 0 ml</string>
+    <string name="record_edit">Edit</string>
+    <string name="record_delete">Delete</string>
 
 </resources>

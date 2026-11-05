@@ -11,7 +11,7 @@
         android:id="@+id/tvRecordDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date"
+        android:text="@string/record_date_label"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#263F32" />
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Steps: 0"
+        android:text="@string/record_steps_label"
         android:textSize="16sp"
         android:textColor="#263F32" />
 
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Calories: 0 kcal"
+        android:text="@string/record_calories_label"
         android:textSize="16sp"
         android:textColor="#263F32" />
 
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Water Intake: 0 ml"
+        android:text="@string/record_water_label"
         android:textSize="16sp"
         android:textColor="#263F32" />
 
@@ -47,7 +47,7 @@
         android:id="@+id/btnEditRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
+        android:text="@string/record_edit"
         android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
         android:backgroundTint="#426B57" />
@@ -57,8 +57,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Delete"
+        android:text="@string/record_delete"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#B85C5C" />
+        android:backgroundTint="#A63D3D" />
 
 </LinearLayout>
