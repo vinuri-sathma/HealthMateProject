@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import com.example.healthmate.controller.RecordController
 
 class AddRecordActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class AddRecordActivity : AppCompatActivity() {
         val etWater = findViewById<EditText>(R.id.etWater)
         val btnSave = findViewById<Button>(R.id.btnSaveRecord)
 
-        val databaseHelper = DatabaseHelper(this)
+        val recordController = RecordController(this)
 
         btnSave.setOnClickListener {
 
@@ -48,7 +49,7 @@ class AddRecordActivity : AppCompatActivity() {
                 "yyyy-MM-dd", Locale.getDefault()
             ).format(Date())
 
-            val isSaved = databaseHelper.insertRecord(
+            val isSaved = recordController.addRecord(
                 stepsValue,
                 caloriesValue,
                 waterValue,

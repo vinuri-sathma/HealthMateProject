@@ -14,14 +14,13 @@ import android.app.DatePickerDialog
 import java.util.Calendar
 import java.util.Locale
 import android.widget.Button
-
-
+import com.example.healthmate.controller.RecordController
 
 class ViewRecordsActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var tvEmpty: TextView
-    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var recordController: RecordController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +28,7 @@ class ViewRecordsActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.rvHealthRecords)
         tvEmpty = findViewById(R.id.tvEmptyRecords)
-        databaseHelper = DatabaseHelper(this)
+        recordController = RecordController(this)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -77,7 +76,7 @@ class ViewRecordsActivity : AppCompatActivity() {
         val selectedDate = findViewById<EditText>(R.id.etSearchDate)
             .text.toString()
 
-        val allRecords = databaseHelper.getAllRecords()
+        val allRecords = recordController.getAllRecords()
 
         val records = if (selectedDate.isEmpty()) {
             allRecords
@@ -110,7 +109,7 @@ class ViewRecordsActivity : AppCompatActivity() {
             .setTitle("Delete Health Record")
             .setMessage("Are you sure you want to delete this record?")
             .setPositiveButton("Delete") { _, _ ->
-                val deleted = databaseHelper.deleteRecord(record.id)
+                val deleted = recordController.deleteRecord(record.id)
 
                 if (deleted) {
                     Toast.makeText(
@@ -171,7 +170,7 @@ class ViewRecordsActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    val updated = databaseHelper.updateRecord(
+                    val updated = recordController.updateRecord(
                         record.id,
                         steps,
                         calories,

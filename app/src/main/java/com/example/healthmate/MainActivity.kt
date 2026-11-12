@@ -5,16 +5,17 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.healthmate.controller.RecordController
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var recordController: RecordController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        databaseHelper = DatabaseHelper(this)
+        recordController = RecordController(this)
 
         val btnAddRecord = findViewById<Button>(R.id.btnAddRecord)
         val btnViewRecords = findViewById<Button>(R.id.btnViewRecords)
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             java.util.Locale.getDefault()
         ).format(java.util.Date())
 
-        val todayRecords = databaseHelper.getAllRecords()
+        val todayRecords = recordController.getAllRecords()
             .filter { it.date == today }
 
         val totalSteps = todayRecords.sumOf { it.steps }
