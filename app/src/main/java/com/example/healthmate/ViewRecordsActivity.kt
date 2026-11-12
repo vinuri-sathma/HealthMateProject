@@ -71,6 +71,10 @@ class ViewRecordsActivity : AppCompatActivity() {
         loadRecords()
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        loadRecords()
+    }
     private fun loadRecords() {
 
         val selectedDate = findViewById<EditText>(R.id.etSearchDate)
