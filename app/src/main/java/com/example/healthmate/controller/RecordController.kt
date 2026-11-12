@@ -1,9 +1,9 @@
 package com.example.healthmate.controller
 
 import android.content.Context
-import com.example.healthmate.DatabaseHelper
-import com.example.healthmate.HealthRecord
-import com.example.healthmate.DashboardSummary
+import com.example.healthmate.data.DatabaseHelper
+import com.example.healthmate.model.HealthRecord
+import com.example.healthmate.model.DashboardSummary
 
 class RecordController(context: Context) {
 

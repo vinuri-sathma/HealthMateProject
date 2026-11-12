@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.healthmate.HealthRecord
+import com.example.healthmate.model.HealthRecord
 import com.example.healthmate.R
 import android.widget.Button
 

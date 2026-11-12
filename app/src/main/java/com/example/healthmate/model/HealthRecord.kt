@@ -1,4 +1,4 @@
-package com.example.healthmate
+package com.example.healthmate.model
 
 data class HealthRecord(
     val id: Int,

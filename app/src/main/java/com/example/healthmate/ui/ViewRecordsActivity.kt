@@ -1,4 +1,4 @@
-package com.example.healthmate
+package com.example.healthmate.ui
 
 import android.os.Bundle
 import android.view.View
@@ -14,7 +14,9 @@ import android.app.DatePickerDialog
 import java.util.Calendar
 import java.util.Locale
 import android.widget.Button
+import com.example.healthmate.R
 import com.example.healthmate.controller.RecordController
+import com.example.healthmate.model.HealthRecord
 
 class ViewRecordsActivity : AppCompatActivity() {
 

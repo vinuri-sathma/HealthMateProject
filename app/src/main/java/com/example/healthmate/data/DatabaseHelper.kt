@@ -1,10 +1,10 @@
-
-package com.example.healthmate
+package com.example.healthmate.data
 
 import android.content.Context
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.healthmate.model.HealthRecord
 
 class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

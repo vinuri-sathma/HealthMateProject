@@ -1,4 +1,4 @@
-package com.example.healthmate
+package com.example.healthmate.model
 
 data class DashboardSummary(
     val totalSteps: Int,

@@ -1,4 +1,4 @@
-package com.example.healthmate
+package com.example.healthmate.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.healthmate.R
 import com.example.healthmate.controller.RecordController
 import java.text.SimpleDateFormat
 import java.util.Date
