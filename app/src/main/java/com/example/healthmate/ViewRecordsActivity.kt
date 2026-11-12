@@ -76,13 +76,7 @@ class ViewRecordsActivity : AppCompatActivity() {
         val selectedDate = findViewById<EditText>(R.id.etSearchDate)
             .text.toString()
 
-        val allRecords = recordController.getAllRecords()
-
-        val records = if (selectedDate.isEmpty()) {
-            allRecords
-        } else {
-            allRecords.filter { it.date == selectedDate }
-        }
+        val records = recordController.getRecordsByDate(selectedDate)
 
 
         if (records.isEmpty()) {
@@ -158,11 +152,11 @@ class ViewRecordsActivity : AppCompatActivity() {
                 val calories = etCalories.text.toString().toIntOrNull()
                 val water = etWater.text.toString().toIntOrNull()
 
-                if (
-                    steps == null || steps < 0 ||
-                    calories == null || calories < 0 ||
-                    water == null || water < 0
-                ) {
+                if (!recordController.isValidRecord(
+                        steps,
+                        calories,
+                        water
+                    )) {
 
                     Toast.makeText(
                         this,
@@ -172,9 +166,9 @@ class ViewRecordsActivity : AppCompatActivity() {
                 } else {
                     val updated = recordController.updateRecord(
                         record.id,
-                        steps,
-                        calories,
-                        water
+                        steps!!,
+                        calories!!,
+                        water!!
                     )
 
                     if (updated) {

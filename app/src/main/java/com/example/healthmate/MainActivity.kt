@@ -4,8 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthmate.controller.RecordController
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,27 +39,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadDashboardData() {
+
         val tvSteps = findViewById<TextView>(R.id.tvDashboardSteps)
         val tvCalories = findViewById<TextView>(R.id.tvDashboardCalories)
         val tvWater = findViewById<TextView>(R.id.tvDashboardWater)
 
-        val today = java.text.SimpleDateFormat(
+        val today = SimpleDateFormat(
             "yyyy-MM-dd",
-            java.util.Locale.getDefault()
-        ).format(java.util.Date())
+            Locale.getDefault()
+        ).format(Date())
 
-        val todayRecords = recordController.getAllRecords()
-            .filter { it.date == today }
+        // Get dashboard calculations from Controller
+        val summary = recordController.getDashboardSummary(today)
 
-        val totalSteps = todayRecords.sumOf { it.steps }
-        val totalCalories = todayRecords.sumOf { it.calories }
-        val totalWater = todayRecords.sumOf { it.water }
-
-        val waterGoal = 2000
-
-        val waterPercentage = ((totalWater.toDouble() / waterGoal) * 100)
-            .toInt()
-            .coerceIn(0, 100)
+        val totalSteps = summary.totalSteps
+        val totalCalories = summary.totalCalories
+        val totalWater = summary.totalWater
+        val waterGoal = summary.waterGoal
+        val waterPercentage = summary.waterPercentage
 
         val tvWaterGoalProgress =
             findViewById<TextView>(R.id.tvWaterGoalProgress)
@@ -64,8 +65,9 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.tvWaterGoalPercentage)
 
         val progressWaterGoal =
-            findViewById<android.widget.ProgressBar>(R.id.progressWaterGoal)
+            findViewById<ProgressBar>(R.id.progressWaterGoal)
 
+        // Update water goal UI
         tvWaterGoalProgress.text =
             getString(R.string.water_goal_progress, totalWater, waterGoal)
 
@@ -74,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         progressWaterGoal.progress = waterPercentage
 
-
+        // Update dashboard UI
         tvSteps.text = getString(R.string.dashboard_steps, totalSteps)
 
         tvCalories.text = getString(
@@ -83,7 +85,5 @@ class MainActivity : AppCompatActivity() {
         )
 
         tvWater.text = getString(R.string.dashboard_water, totalWater)
-
-
     }
 }

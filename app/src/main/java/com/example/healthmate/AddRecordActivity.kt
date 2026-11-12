@@ -5,10 +5,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.healthmate.controller.RecordController
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import com.example.healthmate.controller.RecordController
 
 class AddRecordActivity : AppCompatActivity() {
 
@@ -30,7 +30,11 @@ class AddRecordActivity : AppCompatActivity() {
             val water = etWater.text.toString().trim()
 
             if (steps.isEmpty() || calories.isEmpty() || water.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Please fill all fields",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
@@ -38,29 +42,45 @@ class AddRecordActivity : AppCompatActivity() {
             val caloriesValue = calories.toIntOrNull()
             val waterValue = water.toIntOrNull()
 
-            if (stepsValue == null || caloriesValue == null || waterValue == null ||
-                stepsValue < 0 || caloriesValue < 0 || waterValue < 0) {
-
-                Toast.makeText(this, "Please enter valid values", Toast.LENGTH_SHORT).show()
+            // Validate record values using Controller
+            if (!recordController.isValidRecord(
+                    stepsValue,
+                    caloriesValue,
+                    waterValue
+                )) {
+                Toast.makeText(
+                    this,
+                    "Please enter valid values",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
             val date = SimpleDateFormat(
-                "yyyy-MM-dd", Locale.getDefault()
+                "yyyy-MM-dd",
+                Locale.getDefault()
             ).format(Date())
 
             val isSaved = recordController.addRecord(
-                stepsValue,
-                caloriesValue,
-                waterValue,
+                stepsValue!!,
+                caloriesValue!!,
+                waterValue!!,
                 date
             )
 
             if (isSaved) {
-                Toast.makeText(this, "Record saved successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Record saved successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             } else {
-                Toast.makeText(this, "Failed to save record", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Failed to save record",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
