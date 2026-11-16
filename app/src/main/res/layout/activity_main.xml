@@ -9,12 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/home_app_title"
+            android:layout_marginTop="20dp"
             android:textColor="#426B57"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -30,7 +31,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="16dp"
             android:text="@string/home_overview"
             android:textColor="#263F32"
             android:textSize="22sp"
@@ -40,43 +41,43 @@
             android:id="@+id/tvDashboardSteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:background="#DDECE1"
-            android:padding="24dp"
+            android:padding="12dp"
             android:text="@string/dashboard_steps"
             android:textColor="#263F32"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvDashboardCalories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:background="#F2E5D5"
-            android:padding="24dp"
+            android:padding="12dp"
             android:text="@string/dashboard_calories"
             android:textColor="#5C4536"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvDashboardWater"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:background="#DCECF2"
-            android:padding="24dp"
+            android:padding="12dp"
             android:text="@string/dashboard_water"
             android:textColor="#345363"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <!-- Daily Water Goal -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:background="#DCECF2"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="match_parent"
